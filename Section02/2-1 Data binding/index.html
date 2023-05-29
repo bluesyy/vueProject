@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+
+      <!-- 반환된 객체의 property를 참조한다. -->
+      <!-- 기본 형태로는 열고 닫는 태그에서만 사용가능 -->
+      <p>{{ courseGoal }}</p>
+
+      <!-- v-bind 디렉티브를 사용 -->
+      <!-- html 속성에 대해 vue가 관리하는 데이터를 그 값으로 설정해야 하는 경우 사용 -->
+      <p>Learn more <a v-bind:href="vueLink">about Vue</a>.</p>
+
+      <!-- 자바스크립트 함수를 호출 가능 -->
+      <p>{{ outputGoal() }}</p>
+      <!-- v-html -->
+      <!-- <p v-html="outputGoal()"></p> -->
+    </section>
+  </body>
+</html>
