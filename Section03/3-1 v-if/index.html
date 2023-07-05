@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+    <section id="user-goals">
+      <h2>My course goals</h2>
+      <input type="text" v-model="enteredGoalValue"/>
+      <button @click="addGoal">Add Goal</button>
+      <!-- 
+            * 배열이라서 length 프로퍼티를 가진다.
+            * v-else는 v-if 다음에 바로 와야한다. 그 사이에 다른 요소가 오면 안된다.
+            * v-show를 사용해도 된다. (display: none과 같은 효과)
+            * v-if 는 실제 DOM에서 요소를 추가 또는 삭제한다
+
+            * v-for의 상수 goal 을 외부에서는 사용할 수 없다.
+            * index를 출력할 수도 있다.
+       -->
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-else>
+        <!-- 
+            * 아래와 같이 해보면 첫 번째 요소 삭제시 두 번째 요소의 input 내용이 사라지는걸 볼 수 있다.
+            * 두 번쨰 요소의 콘텐츠가 첫 번째 DOM 요소로 옮겨 가기 때문  -> VUE가 요소를 재사용 해서 생긴 문제
+            * v-bind:key 요소를 추가해서 식별 가능하게 해주자
+         -->
+        <li v-for="(goal, index) in goals" :key="goal" @click="removeGoal(index)">
+          <p>{{ goal }} - {{ index }}</p>
+          <input type="text" @click.stop>
+        </li>
+      </ul>
+      <!-- 
+          * 아래와 같이 활용도 가능하다.
+          * 숫자도 출력 가능
+       -->
+      <!-- <ul>
+        <li v-for="(value, key) in {Name: 'John', Age: '33'}">{{ key }}: {{ value }}</li>
+      </ul> -->
+      <!-- <ul>
+        <li v-for="num in 10">{{ num }}</li>
+      </ul> -->
+    </section>
+  </body>
+</html>
