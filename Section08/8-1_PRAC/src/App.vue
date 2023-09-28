@@ -26,6 +26,7 @@ export default {
     setUserData(name, age) {
       this.user = {
         name: name,
+        // age에 + 를 붙이면 간단하게 String -> Number 로 
         age: +age
       }
     },
